@@ -1,0 +1,62 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    >
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+</LinearLayout>
+
+-------------------------------------------------------------------
+public class MainActivity extends AppCompatActivity {
+
+    Button btn;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+btn=findViewById(R.id.button);
+btn.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        makeDialog();
+    }
+});
+
+
+
+
+    }
+    
+    private void maketoast(){
+        Toast.makeText(MainActivity.this, "Hello", Toast.LENGTH_SHORT).show();
+    }
+
+    private void makeDialog(){
+        new AlertDialog.Builder(MainActivity.this)
+                .setTitle("What do You Want?")
+                .setCancelable(false)
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).show();
+    }
+            
+}

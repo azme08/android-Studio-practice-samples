@@ -1,0 +1,21 @@
+  button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                int value1,factorial=1;
+                 value1=Integer.parseInt(editText1.getText().toString());
+                 StringBuilder res=new StringBuilder();
+
+                for(int i=1;i<=value1;i++){
+                    factorial=factorial*i;
+
+                   
+                }
+                res.append("The result is: "+factorial);
+                display.setText(res.toString());
+
+
+            }
+
+        });

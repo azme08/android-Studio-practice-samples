@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    >
+
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:srcCompat="@drawable/image1"
+        android:scaleType="centerCrop"
+        />
+
+    <Button
+        android:id="@+id/bshow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show" />
+
+    <Button
+        android:id="@+id/bgone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gone" />
+
+    <Button
+        android:id="@+id/btoast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Toast" />
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go To Next Page"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:id="@+id/nextpage"
+        />
+
+</LinearLayout>
+--------------------------------------------------------------------------------------------------------------------
+
+package com.azme.myapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+
+    ImageView image;
+    Button bshow,bgone,btoast;
+    TextView nextpage;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+      image =findViewById(R.id.image);
+      bshow =findViewById(R.id.bshow);
+      bgone =findViewById(R.id.bgone);
+      btoast = findViewById(R.id.btoast);
+      nextpage=findViewById(R.id.nextpage);
+
+      bshow.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              image.setVisibility(View.VISIBLE);
+          }
+      });
+
+      bgone.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              image.setVisibility(View.GONE);
+          }
+      });
+
+      btoast.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+
+              Toast.makeText(MainActivity.this,"Toast is showing",Toast.LENGTH_LONG).show();
+          }
+      });
+
+      nextpage.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              Intent myIntent = new Intent(MainActivity.this,MainActivity2.class);
+              startActivity(myIntent);
+          }
+      });
+
+    }
+
+
+
+}
+------------------------------------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#f1c40f"
+    android:layout_margin="15dp"
+
+    >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/computer"
+        android:scaleType="centerCrop"
+        android:visibility="visible"
+        android:id="@+id/img"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bshow"
+        android:text="Show Image"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bgone"
+        android:text="close image"
+        />
+
+    <Button
+        android:id="@+id/btoast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Toast" />
+
+
+</LinearLayout>
+--------------------------------------------------------------------------------------------------------------------------
+
+package com.azme.digitaltajbih;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+        ImageView image;
+     Button bgone,bshow,btoast;
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+       image = findViewById(R.id.img);
+       bgone = findViewById(R.id.bgone);
+       bshow = findViewById(R.id.bshow);
+        btoast = findViewById(R.id.btoast);
+
+
+       bshow.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+
+               image.setVisibility(View.VISIBLE);
+           }
+       });
+
+       bgone.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+
+               image.setVisibility(View.GONE);
+           }
+       });
+ btoast.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+
+              Toast.makeText(MainActivity.this,"Toast is showing",Toast.LENGTH_LONG).show();
+          }
+      });
+
+
+    }
+
+}
+....................................................................................................
+
+
+ <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Click To Show Image"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textColor="#FF0000"
+        android:layout_margin="20dp"
+        android:background="#fff"
+
+
+        />
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Click To Close Image"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textColor="#00008B"
+        android:layout_margin="20dp"
+        />
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Click To Toast Image"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textColor="#00FF00"
+        android:layout_margin="20dp"
+        />
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Click To Next page"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textColor="#00FFFF"
+        android:layout_margin="20dp"
+        />

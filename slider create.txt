@@ -1,0 +1,39 @@
+createSlider();
+
+ private void createSlider(){
+
+        ArrayList<SlideModel> imageList = new ArrayList<>();
+        //imageList.add(new SlideModel(R.drawable.slide_1, null));
+        imageList.add(new SlideModel(R.drawable.slider_1, "Hello from Jubayer", null));
+        imageList.add(new SlideModel(R.drawable.slider_2, "Never Give Up", null));
+        imageList.add(new SlideModel(R.drawable.slider_3, "Unlimited Funny Videos", null));
+        imageSlider.setImageList(imageList, ScaleTypes.CENTER_CROP);
+
+    }
+
+------------------------------------------------------------------------------------------------------------
+
+ <soup.neumorphism.NeumorphCardView
+                    android:id="@+id/neumorphCardView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0dp"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="0dp"
+                    app:neumorph_shadowColorDark="@color/shadow_color_bottom"
+                    app:neumorph_shadowColorLight="@color/shadow_color_top"
+                    >
+
+                    <com.denzcoskun.imageslider.ImageSlider
+                        android:id="@+id/image_slider"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:iss_auto_cycle="true"
+                        app:iss_delay="0"
+                        app:iss_period="3000"
+                        app:iss_text_align="CENTER"
+                        app:iss_title_background="@color/slider_title_background"
+                        tools:ignore="MissingClass"
+                        />
+
+                </soup.neumorphism.NeumorphCardView>

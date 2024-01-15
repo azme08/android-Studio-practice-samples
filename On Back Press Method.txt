@@ -1,0 +1,38 @@
+public class MainActivity extends AppCompatActivity {
+
+    Button btn;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        btn=findViewById(R.id.btn1);
+
+
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        // super.onBackPressed();
+        new AlertDialog.Builder(MainActivity.this)
+                .setTitle("Confirmation")
+                .setMessage("Are you want to exit?")
+                .setIcon(R.drawable.warning)
+                .setCancelable(false)
+                .setNegativeButton("No Thanks", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        finishAndRemoveTask();
+                    }
+                }).show();
+
+
+    }
+}

@@ -1,0 +1,49 @@
+public class MainActivity extends AppCompatActivity {
+
+    EditText editText1,editText2;
+    TextView display;
+    Button button;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        editText1=findViewById(R.id.ed1);
+        editText2=findViewById(R.id.ed2);
+
+        display=findViewById(R.id.txt1);
+        button=findViewById(R.id.btn1);
+
+
+
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                int value1,value2,sum=0;
+                 value1=Integer.parseInt(editText1.getText().toString());
+                 value2=Integer.parseInt(editText2.getText().toString());
+
+                 StringBuilder res=new StringBuilder();
+
+
+                for(int i=value1;i<=value2;i++){
+                    sum+=i;
+
+                   
+                }
+                res.append(sum);
+                display.setText(res.toString());
+
+
+            }
+
+        });
+
+
+    }
+
+}

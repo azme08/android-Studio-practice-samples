@@ -1,0 +1,23 @@
+   <WebView
+        android:id="@+id/mweb"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+-----------------------------------------------------------
+
+<uses-permission android:name="android.permission.INTERNET"/>
+-------------------------------------------------------------------
+
+  WebView mweb;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        mweb = findViewById(R.id.mweb);
+
+        mweb.getSettings().setJavaScriptEnabled(true);
+        mweb.loadUrl("https://www.espncricinfo.com/");
+        

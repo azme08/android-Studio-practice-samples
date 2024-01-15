@@ -1,0 +1,50 @@
+public class MainActivity extends AppCompatActivity {
+
+    Button btn;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+btn=findViewById(R.id.button);
+
+
+btn.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+
+        checkInternet();
+    }
+});
+
+    }
+    
+    //======================================================================================
+    //======================================================================================
+
+    private void checkInternet(){
+        ConnectivityManager connectivityManager= (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo=connectivityManager.getActiveNetworkInfo();
+
+        if(networkInfo !=null && networkInfo.isConnected()){
+            btn.setText("Connection Is Okay!!");
+        }else{
+            btn.setText("No Network Connection!!");
+        }
+    }
+
+
+    private int funct(int a, int b, int c) {
+        int sum=a+b+c;
+
+        btn.setText("Sum is: "+sum);
+        return 0;
+    }
+    
+    private void maketoast(String st, int x){
+        Toast.makeText(MainActivity.this, "Hello "+st+"\nYour salary is: "+x, Toast.LENGTH_SHORT).show();
+    }
+
+            
+}

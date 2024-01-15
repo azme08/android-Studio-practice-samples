@@ -1,0 +1,43 @@
+public class MainActivity extends AppCompatActivity {
+
+    Button btn1,btn2;
+    MediaPlayer mediaPlayer;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        btn1=findViewById(R.id.btn1);
+        btn2=findViewById(R.id.btn2);
+
+btn1.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+
+        if (mediaPlayer !=null) mediaPlayer.release();
+        mediaPlayer=MediaPlayer.create(MainActivity.this, R.raw.song1);
+        mediaPlayer.start();
+    }
+});
+btn2.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+
+        if (mediaPlayer !=null) mediaPlayer.release();
+        mediaPlayer=new MediaPlayer();
+
+        try {
+
+            mediaPlayer.setDataSource("https://file-examples.com/storage/fe1734aff46541d35a76822/2017/11/file_example_MP3_700KB.mp3");
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+});
+
+
+
+    }
+}

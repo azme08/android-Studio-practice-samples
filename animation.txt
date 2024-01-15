@@ -1,0 +1,68 @@
+ public class MainActivity extends AppCompatActivity {
+
+    Button button1;
+    ImageView img1;
+    Animation updown;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        button1=findViewById(R.id.button);
+        img1=findViewById(R.id.img);
+        updown= AnimationUtils.loadAnimation(MainActivity.this,R.anim.up_down_cont);
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                img1.startAnimation(updown);
+
+            }
+        });
+
+
+    }
+}
+.......................................................................................................................
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    >
+
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:srcCompat="@drawable/img4"
+
+        />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+</LinearLayout>
+--------------------------------------------------------------------------------------------------------------------
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+    android:fillAfter="false">
+    <translate
+        android:fromYDelta="0%p"
+        android:toYDelta="100%p"
+        android:duration="1400"
+        android:repeatCount="infinite"
+        android:repeatMode="reverse"
+
+        />
+
+</set>

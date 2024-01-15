@@ -1,0 +1,46 @@
+public class MainActivity extends AppCompatActivity {
+
+  ImageView img1;
+  MediaPlayer mediaPlayer;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        img1=findViewById(R.id.imageView1);
+
+        img1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+                //changing icon pause to play after start the song
+                if(img1.getTag() != null && img1.getTag().toString().contains("NOT_PLAYING")){
+
+                    if(mediaPlayer !=null) mediaPlayer.release(); //release past song and reload song again
+                    mediaPlayer=MediaPlayer.create(MainActivity.this,R.raw.song1);//push song
+                    mediaPlayer.start();//start the song by click
+                    img1.setImageResource(R.drawable.pauseicon);
+                    img1.setTag("PLAYING_NOW");//set tag for play
+
+                    //After complete the song change play to pause button 
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            img1.setImageResource(R.drawable.playicon);//load icon
+                            img1.setTag("NOT_PLAYING");//set tag for not play
+                        }
+                    });
+                }
+                //changing icon play to pause after click to pause
+                else{
+                    if(mediaPlayer !=null) mediaPlayer.release();
+                    img1.setImageResource(R.drawable.playicon);
+                    img1.setTag("NOT_PLAYING");//set tag for not play
+                }
+
+            }
+        });
+
+
+
+    }
+}

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#f1c40f"
+    android:layout_margin="15dp"
+
+    >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/computer"
+        android:scaleType="centerCrop"
+        android:visibility="visible"
+        android:id="@+id/img"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bshow"
+        android:text="Show Image"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bgone"
+        android:text="close image"
+        />
+
+   <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btoast"
+        android:text="show toast"/>
+
+
+
+</LinearLayout>
+--------------------------------------------------------------------------------------------------------------------------
+
+package com.azme.digitaltajbih;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+        ImageView image;
+     Button bgone,bshow;
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+       image = findViewById(R.id.img);
+       bgone = findViewById(R.id.bgone);
+       bshow = findViewById(R.id.bshow);
+
+
+       bshow.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+
+               image.setVisibility(View.VISIBLE);
+           }
+       });
+
+       bgone.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+
+               image.setVisibility(View.GONE);
+           }
+       });
+
+        btoast.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+
+               Toast.makeText(MainActivity.this, "HEY HERE IS THE TOAST", Toast.LENGTH_SHORT).show();
+
+           }
+
+    }
+
+}

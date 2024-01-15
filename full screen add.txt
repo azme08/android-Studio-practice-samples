@@ -1,0 +1,68 @@
+ <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        android:layout_marginTop="10dp"
+
+        >
+
+    </com.google.android.gms.ads.AdView>
+
+-------------------------------------
+
+ private InterstitialAd mInterstitialAd1;
+    AdView add3;
+
+
+MobileAds.initialize(this,
+                new OnInitializationCompleteListener() {
+
+                    @Override
+                    public void onInitializationComplete(InitializationStatus initializationStatus) {
+                    }
+                });
+
+        add3=findViewById(R.id.adView3);
+        AdRequest adRequest1 = new AdRequest.Builder().build();
+        add3.loadAd(adRequest1);
+
+
+
+        InterstitialAd.load(this, "ca-app-pub-3940256099942544/1033173712", adRequest1,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        // The mInterstitialAd reference will be null until
+                        // an ad is loaded.
+                        mInterstitialAd1 = interstitialAd;
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
+                        mInterstitialAd1 = null;
+                    }
+                });
+
+
+
+
+
+
+        text2=findViewById(R.id.txt1);
+        text22=findViewById(R.id.txt2);
+
+
+
+
+ text22.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mInterstitialAd1.show(MainActivity2.this);
+            }
+        });

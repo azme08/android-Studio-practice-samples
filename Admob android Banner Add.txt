@@ -1,0 +1,43 @@
+<uses-permission android:name="android.permission.INTERNET"/>
+
+ implementation 'com.google.android.gms:play-services-ads:21.2.0'
+
+
+<meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+ <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+
+    </com.google.android.gms.ads.AdView>
+
+----------------------------------------------------------------------------------------------------
+
+ AdView add1;
+
+ MobileAds.initialize(this,
+                new OnInitializationCompleteListener() {
+
+                    @Override
+                    public void onInitializationComplete(InitializationStatus initializationStatus) {
+                    }
+                });
+
+ 
+        add1=findViewById(R.id.adView);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        add1.loadAd(adRequest);
+
+

@@ -1,0 +1,102 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    >
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Practice"
+    android:textSize="25dp"
+    android:gravity="center"
+
+    />
+   <EditText
+       android:id="@+id/ed1"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:ems="10"
+       android:layout_marginTop="10dp"
+       android:hint="Enter the value of your pattern?"
+       android:inputType="numberDecimal"
+       />
+
+
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Click"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        />
+
+
+            <TextView
+                android:id="@+id/txt1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_margin="15dp"
+                android:textSize="25dp"
+                android:text=""
+                />
+
+
+
+
+
+
+
+
+
+</LinearLayout>
+=====================================================================================================
+=================================================================================================
+public class MainActivity extends AppCompatActivity {
+
+    EditText editText1,editText2;
+    TextView display;
+    Button button;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        editText1=findViewById(R.id.ed1);
+
+
+
+        display=findViewById(R.id.txt1);
+        button=findViewById(R.id.btn1);
+
+
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int x=Integer.parseInt(editText1.getText().toString());
+
+
+                for(int i=1;i<=x;i++) {
+                    for (int j = 1; j <= i; j++) {
+                        display.append(" * ");
+                    }
+                    display.append("\n");
+                }
+            }
+        });
+
+
+
+
+    }
+
+}

@@ -1,0 +1,116 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#BB883B"
+
+    >
+
+    <Button
+        android:layout_marginTop="50dp"
+        android:id="@+id/btnadd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Layout"
+        />
+
+    <Button
+        android:id="@+id/btnremove"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Remove Layout"
+        />
+
+    <LinearLayout
+        android:id="@+id/mylayout"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:orientation="vertical"
+        android:background="@color/black"
+        >
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+--------------------------------------------------------------------------------------
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+    <TextView
+        android:id="@+id/txt1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello World"
+        android:textSize="30dp"
+        android:gravity="center"
+        />
+
+        <ImageView
+            android:id="@+id/img1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+
+            android:src="@drawable/img1"
+            />
+    <TextView
+        android:id="@+id/txt2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Carlo Ancelotti has coached teams of the highest worldwide as Real Madrid, Bayern Munich, PSG, Chelsea, Milan and Juventus. Carlo Ancelotti is the only coach in history with five UEFA Champions League titles."
+        android:textSize="20dp"
+        />
+
+
+
+    </LinearLayout>
+
+</ScrollView>
+
+</LinearLayout>
+----------------------------------------------------------------------------------
+public class MainActivity extends AppCompatActivity {
+LinearLayout mainLayout,mylayout;
+Button addbtn,removebtn;
+LayoutInflater layoutInflater;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+
+        mainLayout=findViewById(R.id.main);
+        mylayout=findViewById(R.id.mylayout);
+        addbtn=findViewById(R.id.btnadd);
+        removebtn=findViewById(R.id.btnremove);
+
+        layoutInflater= (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        addbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                layoutInflater.inflate(R.layout.new_layout,mylayout);
+            }
+        });
+    }
+}

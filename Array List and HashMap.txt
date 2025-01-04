@@ -1,0 +1,233 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#DAD492"
+    >
+
+<ListView
+    android:id="@+id/listview1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:layout_marginTop="30dp"
+    />
+
+
+
+</LinearLayout>
+----------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:orientation="horizontal"
+        android:background="#E2DCCB"
+
+        android:layout_marginTop="10dp"
+        android:padding="20dp"
+        >
+
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="left|center"
+            android:layout_marginLeft="10dp"
+            >
+
+
+            <TextView
+                android:id="@+id/txtname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Abdullah Al Azme"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/txtage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Age: 22"
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/txtbg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Blood Group: O+"
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                />
+
+
+            <TextView
+                android:id="@+id/txtnumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Phone Number: 01882467943"
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+
+-----------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------
+package com.example.timetopracticeagain;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class MainActivity extends AppCompatActivity {
+
+    ListView listView;
+    ArrayList<HashMap<String, String> > arrayList= new ArrayList<>();
+    HashMap <String, String> hashMap;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+
+        listView=findViewById(R.id.listview1);
+
+        hashMap=new HashMap<>();
+        hashMap.put("Name","Abdullah Al Azme");
+        hashMap.put("Age","Age: 22");
+        hashMap.put("Blood","Blood Group: O+");
+        hashMap.put("Number","01882******");
+        arrayList.add(hashMap);
+
+
+
+        hashMap=new HashMap<>();
+        hashMap.put("Name","Jiniya Khan");
+        hashMap.put("Age","Age: 22");
+        hashMap.put("Blood","Blood Group: B+");
+        hashMap.put("Number","01756******");
+        arrayList.add(hashMap);
+
+        hashMap=new HashMap<>();
+        hashMap.put("Name","Liza Khan");
+        hashMap.put("Age","Age: 28");
+        hashMap.put("Blood","Blood Group: A+");
+        hashMap.put("Number","01976******");
+        arrayList.add(hashMap);
+
+        hashMap=new HashMap<>();
+        hashMap.put("Name","Rafiqul Islam");
+        hashMap.put("Age","Age: 30");
+        hashMap.put("Blood","Blood Group: O+");
+        hashMap.put("Number","01834******");
+        arrayList.add(hashMap);
+
+        hashMap=new HashMap<>();
+        hashMap.put("Name","Nabil Hasan Khan");
+        hashMap.put("Age","Age: 18");
+        hashMap.put("Blood","Blood Group: A+");
+        hashMap.put("Number","01922******");
+        arrayList.add(hashMap);
+
+        hashMap=new HashMap<>();
+        hashMap.put("Name","Yasin Arafat");
+        hashMap.put("Age","Age: 20");
+        hashMap.put("Blood","Blood Group: O+");
+        hashMap.put("Number","01884******");
+        arrayList.add(hashMap);
+
+
+        MyAdapter myAdapter=new MyAdapter();
+        listView.setAdapter(myAdapter);
+
+
+    }
+
+private class MyAdapter extends BaseAdapter{
+
+        LayoutInflater layoutInflater;
+    @Override
+    public int getCount() {
+        return arrayList.size();
+    }
+
+    @Override
+    public Object getItem(int i) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return 0;
+    }
+
+    @Override
+    public View getView(int position, View view, ViewGroup viewGroup) {
+
+        layoutInflater= (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View mview=layoutInflater.inflate(R.layout.item,viewGroup,false);
+
+        ImageView img1=mview.findViewById(R.id.imageView1);
+        TextView txtName=mview.findViewById(R.id.txtname);
+        TextView txtAge=mview.findViewById(R.id.txtage);
+        TextView txtBG=mview.findViewById(R.id.txtbg);
+        TextView txtNumber=mview.findViewById(R.id.txtnumber);
+
+        HashMap<String, String> hashMap=arrayList.get(position);
+
+        txtName.setText(hashMap.get("Name"));
+        txtAge.setText(hashMap.get("Age"));
+        txtBG.setText(hashMap.get("Blood"));
+        txtNumber.setText(hashMap.get("Number"));
+
+
+        return mview;
+    }
+}
+
+}
